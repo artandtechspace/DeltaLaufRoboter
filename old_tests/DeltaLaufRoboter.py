@@ -87,47 +87,7 @@ def delta_calcInverse(x0, y0, z0):
 
     return [theta1,theta2,theta3]
 
-def move_all_a(theta1, theta2, theta3):
-    kit.servo[0].angle = theta1
-    kit.servo[1].angle = theta2
-    kit.servo[2].angle = theta3
-    kit.servo[4].angle = theta1
-    kit.servo[5].angle = theta2
-    kit.servo[6].angle = theta3
-    kit.servo[8].angle = theta1
-    kit.servo[9].angle = theta2
-    kit.servo[10].angle = theta3
 
-def move_all_b(theta1, theta2, theta3):
-    kid.servo[0].angle = theta1
-    kid.servo[1].angle = theta2
-    kid.servo[2].angle = theta3
-    kid.servo[4].angle = theta1
-    kid.servo[5].angle = theta2
-    kid.servo[6].angle = theta3
-    kid.servo[8].angle = theta1
-    kid.servo[9].angle = theta2
-    kid.servo[10].angle = theta3
-
-def moveInv(x,y,z,gruppe):
-    try:
-        if(gruppe<3):
-            theta1, theta2, theta3 = delta_calcInverse(x,y,z)
-            kit.servo[(gruppe*4)].angle = theta1
-            kit.servo[(gruppe*4+1)].angle = theta2
-            kit.servo[(gruppe*4+2)].angle = theta3
-
-        elif(gruppe>=3):
-            theta1, theta2, theta3 = delta_calcInverse(-x,-y,z)
-            kid.servo[(gruppe%3)*4].angle = theta1
-            kid.servo[(gruppe%3)*4+1].angle = theta2
-            kid.servo[(gruppe%3)*4+2].angle = theta3
-    except ValueError:        
-        print("Man")
-def moveInv_all(x,y,z):
-    for i in range(6):
-        moveInv(x,y,z,i)
-        
 def Parabel(x0, y0, z0, zeit = 0.1):
     b = -115
     xy = math.sqrt(x0*x0+y0*y0)
